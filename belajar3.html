@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Hari Perempuan 💐</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      overflow: hidden;
+      background: linear-gradient(45deg, #ff6b6b, #ff9a9e, #fad0c4, #ffdde1);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      font-family: 'Pacifico', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .text-3d {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff758f, 0 0 60px #ff4d6d;
+      animation: fadeIn 2s ease-in-out forwards, glow 3s ease-in-out infinite alternate;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff758f; }
+      to { text-shadow: 0 0 40px #ff1744, 0 0 80px #ff1744; }
+    }
+
+    .love-messages {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .love-messages p {
+      margin: 10px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .love-messages p:nth-child(1) { animation-delay: 1s; }
+    .love-messages p:nth-child(2) { animation-delay: 1.4s; }
+    .love-messages p:nth-child(3) { animation-delay: 1.8s; }
+    .love-messages p:nth-child(4) { animation-delay: 2.2s; }
+    .love-messages p:nth-child(5) { animation-delay: 2.6s; }
+    .love-messages p:nth-child(6) { animation-delay: 3s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Balon & bunga jatuh */
+    .float-item {
+      position: absolute;
+      font-size: 2rem;
+      animation: rise 7s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+    }
+
+    /* Bunga jatuh dari atas */
+    .flower {
+      position: absolute;
+      top: -50px;
+      font-size: 1.8rem;
+      animation: fall 6s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .text-3d { font-size: 2.2rem; }
+      .love-messages { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="text-3d">🌸 Happy National GF, Luneta! 🌸</div>
+  
+  <div class="love-messages">
+    <p>💕 You're my everything 💕</p>
+    <p>💐 Terima kasih sudah jadi inspirasiku 💐</p>
+    <p>💖 Kamu kuat, cantik, dan luar biasa 💖</p>
+    <p>🌸 Hari ini istimewa, sama seperti dirimu 🌸</p>
+    <p>💝 Aku bangga padamu, selalu 💝</p>
+    <p>💞 Happy Women’s Day, My Queen 💞</p>
+  </div>
+
+  <!-- Musik romantis -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Balon Love & Bunga naik
+    function createFloat() {
+      const floatItem = document.createElement('div');
+      floatItem.className = 'float-item';
+      floatItem.innerHTML = Math.random() > 0.5 ? '❤️' : '🌹';
+      floatItem.style.left = Math.random() * 100 + 'vw';
+      floatItem.style.bottom = '-50px';
+      floatItem.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(floatItem);
+      setTimeout(() => floatItem.remove(), 8000);
+    }
+    setInterval(createFloat, 1000);
+
+    // Bunga jatuh dari atas
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      const flowers = ['🌷','🌸','🌺','🌻','💐'];
+      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 7000);
+    }
+    setInterval(createFlower, 1200);
+
+    // Klik → keluar bunga & hati
+    document.addEventListener('click', function(e) {
+      for(let i=0; i<6; i++){
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.innerHTML = Math.random() > 0.5 ? '🌸' : '💕';
+          heart.style.position = 'absolute';
+          heart.style.left = e.clientX + 'px';
+          heart.style.top = e.clientY + 'px';
+          heart.style.fontSize = '2rem';
+          heart.style.pointerEvents = 'none';
+          heart.style.animation = 'rise 2s ease-out forwards';
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 2000);
+        }, i * 100);
+      }
+    });
+  </script>
+</body>
+</html>
